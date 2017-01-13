@@ -14,14 +14,15 @@ class CreateCategoryTable extends Migration
     {
         Schema::create('category', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('description');
+            $table->string('name');
+            $table->integer('pid')->unsigned()->nullable();
         });
 
         Schema::create('category_translation', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('category_id');
             $table->integer('language_id');
-            $table->string('title');
+            $table->string('name');
         });
     }
 
