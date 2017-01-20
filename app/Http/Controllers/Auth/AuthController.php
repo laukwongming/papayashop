@@ -25,10 +25,6 @@ class AuthController extends MyBaseController
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
-    protected $loginPath    = '/auth/login';
-
-    protected $redirectPath = '/product';
-
     protected $username     = 'username';
 
     /**
@@ -73,14 +69,31 @@ class AuthController extends MyBaseController
 
     protected function getLogin()
     {
+        dd(app()->supportLanguage);
         $bag = ['lan'=>LanguageHelper::allWithoutCurrent(),
                 'curLan'=>LanguageHelper::currentName()];
 
         return view('layouts.auth.login',$bag);
     }
 
-    /*
-     * Override loginPath of trait AuthenticatesUsers
+    /**
+     * Override loginPath function of trait AuthenticatesUsers
+     *
+     * @return string
      */
+    protected function loginPath()
+    {
+        return route('show-product');
+    }
+
+    /**
+     * Override redirectPath function of trait RedirectsUsers
+     *
+     * @return string
+     */
+    protected function redirectPath()
+    {
+        return route('get-login');
+    }
 
 }

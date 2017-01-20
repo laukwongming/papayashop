@@ -101,4 +101,16 @@
                         </li>
                     </ul>
                 </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe"></i>  English <b class="caret"></b></a>
+
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#">繁體中文</a>
+                        </li>
+                        <li>
+                            <a href="#">簡體中文</a>
+                        </li>
+                    </ul>
+                </li>
             </ul>

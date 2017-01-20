@@ -12,5 +12,8 @@
                 </li>
             </ul>
         </li>
+            <li>
+                    <a href="{{route('add-category')}}"><i class="fa fa-fw fa-edit"></i> Forms</a>
+            </li>
     </ul>
 </div>

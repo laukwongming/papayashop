@@ -3,8 +3,6 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Config;
-use App;
 
 class MutiLanMiddleware
 {
@@ -18,16 +16,46 @@ class MutiLanMiddleware
      */
     public function handle($request, Closure $next)
     {
-        $locale = Config::get('app.locale');
-        $supportLan = array_keys(Config::get('app.language_support'));
-        $inputlan = $request->input('lan',$locale);
-        if(in_array($inputlan,$supportLan))
-        {
-           $locale = $inputlan;
-        }
+        dd('middleware');
+        $inputlan = $request->input('lan');
+        $defaultLan = app()->config->get('app.locale');
 
-        App::setLocale($locale);
+        if(is_null($inputlan))
+        {
+            $sessionApplocale = app()->session->get('applocale');
+            if(is_null($sessionApplocale))
+            {
+                app()->session->set('applocale',$defaultLan);
+                app()->setLocale($defaultLan);
+            }else
+            {
+                app()->setLocale($sessionApplocale);
+            }
+
+        }else
+        {
+            $supportLan = app()->supportLanguage;
+            $isExist = false;
+            foreach ($supportLan as $language)
+            {
+               if($inputlan === $language->code)
+               {
+                    $isExist = true;
+                    break;
+               }
+            }
+
+            if($isExist)
+            {
+                $defaultLan = $inputlan;
+            }
+
+            app()->session->set('applocale',$defaultLan);
+            app()->setLocale($defaultLan);
+
+        }
 
         return $next($request);
     }
+
 }

@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Http\Request;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -11,7 +13,10 @@
 |
 */
 
+Route::get('/', function(Request $request){
 
+    dd(app()->supportLanguage[0]->code);
+});
 
 Route::get('auth/login', 'Auth\AuthController@getLogin')->name('get-login');
 
@@ -21,4 +26,5 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout')->name('get-logout');
 
 Route::get('/product/show', 'ProductController@show')->name('show-product');
 
+Route::get('/categories/add', 'CategoryController@addCategory')->name('add-category');
 
