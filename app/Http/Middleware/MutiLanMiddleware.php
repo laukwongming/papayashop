@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Model\Language;
 use Closure;
 
 class MutiLanMiddleware
@@ -16,7 +17,9 @@ class MutiLanMiddleware
      */
     public function handle($request, Closure $next)
     {
-        dd('middleware');
+
+
+
         $inputlan = $request->input('lan');
         $defaultLan = app()->config->get('app.locale');
 
@@ -35,6 +38,7 @@ class MutiLanMiddleware
         }else
         {
             $supportLan = app()->supportLanguage;
+
             $isExist = false;
             foreach ($supportLan as $language)
             {
@@ -54,6 +58,9 @@ class MutiLanMiddleware
             app()->setLocale($defaultLan);
 
         }
+
+        view()->share('curLan',Language::current());
+        view()->share('otherLan',Language::other());
 
         return $next($request);
     }

@@ -50,12 +50,12 @@
                                         <div class="col-md-2">
                                             <div class="dropdown">
                                               <button class="btn btn-default dropdown-toggle" type="button" id="id_btn_language" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                {{$curLan}}
+                                                {{$curLan->name}}
                                                 <span class="caret"></span>
                                               </button>
                                               <ul class="dropdown-menu">
-                                                @foreach ($lan as $key=> $value)
-                                                    <li><a href="{{route('get-login',['lan'=>$key])}}">{{$value}}</a></li>
+                                                @foreach ($otherLan as $lan)
+                                                    <li><a href="{{route('get-login',['lan'=>$lan->code])}}">{{$lan->name}}</a></li>
                                                 @endforeach
                                               </ul>
                                             </div>

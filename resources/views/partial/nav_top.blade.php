@@ -102,15 +102,17 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe"></i>  English <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-globe"></i>  {{$curLan->name}} <b class="caret"></b></a>
 
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="#">繁體中文</a>
-                        </li>
-                        <li>
-                            <a href="#">簡體中文</a>
-                        </li>
-                    </ul>
+                    @if(count($otherLan) > 0)
+                        <ul class="dropdown-menu">
+                            @foreach ($otherLan as $lan)
+                                <li>
+                                    <a href=" {{ url(Request::path())}}?lan={{$lan->code}}">{{$lan->name}}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
+
                 </li>
             </ul>

@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Validator;
-use Auth;
-use App\Helper\LanguageHelper;
 use App\Http\Controllers\MyBaseController;
+use App\Model\Language;
 use App\User;
+use Auth;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Validator;
 
 class AuthController extends MyBaseController
 {
@@ -69,11 +69,11 @@ class AuthController extends MyBaseController
 
     protected function getLogin()
     {
-        dd(app()->supportLanguage);
-        $bag = ['lan'=>LanguageHelper::allWithoutCurrent(),
-                'curLan'=>LanguageHelper::currentName()];
 
-        return view('layouts.auth.login',$bag);
+        // $bag = ['otherLan'=>Language::other(),
+        //         'curLan'=>Language::current()];
+
+        return view('layouts.auth.login');
     }
 
     /**

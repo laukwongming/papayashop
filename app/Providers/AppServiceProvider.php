@@ -18,8 +18,6 @@ class AppServiceProvider extends ServiceProvider
         {
             abort(403,'None of support Language');
         }
-
-        view()->share('supportLanguage', $this->app->supportLanguage);
     }
 
     /**

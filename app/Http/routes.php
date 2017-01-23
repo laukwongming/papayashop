@@ -1,5 +1,6 @@
 <?php
 
+use App\Model\Language;
 use Illuminate\Http\Request;
 
 /*
@@ -13,18 +14,17 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/', function(Request $request){
-
-    dd(app()->supportLanguage[0]->code);
-});
-
 Route::get('auth/login', 'Auth\AuthController@getLogin')->name('get-login');
-
 Route::post('auth/login', 'Auth\AuthController@postLogin')->name('post-login');
 
-Route::get('auth/logout', 'Auth\AuthController@getLogout')->name('get-logout');
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('auth/logout', 'Auth\AuthController@getLogout')->name('get-logout');
+    Route::get('product/show', 'ProductController@show')->name('show-product');
+    Route::get('categories/add', 'CategoryController@addCategory')->name('add-category');
+});
 
-Route::get('/product/show', 'ProductController@show')->name('show-product');
 
-Route::get('/categories/add', 'CategoryController@addCategory')->name('add-category');
+
+
+
 
