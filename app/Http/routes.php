@@ -21,6 +21,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('auth/logout', 'Auth\AuthController@getLogout')->name('get-logout');
     Route::get('product/show', 'ProductController@show')->name('show-product');
     Route::get('categories/add', 'CategoryController@addCategory')->name('add-category');
+    Route::post('categories/store', 'CategoryController@storeCategory')->name('store-category');
 });
 
 

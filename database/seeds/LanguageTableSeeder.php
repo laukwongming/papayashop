@@ -17,7 +17,7 @@ class LanguageTableSeeder extends Seeder
         ]);
 
         DB::table('language')->insert([
-            'code' => 'zh-tw',
+            'code' => 'zh-hk',
             'name' => '繁體',
         ]);
 

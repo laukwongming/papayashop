@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\MyBaseController;
 use App\Http\Requests;
+use App\Http\Requests\StoreCategoryRequest;
 use App\Model\Category;
 use App\Model\Language;
 use Illuminate\Http\Request;
@@ -18,11 +19,15 @@ class CategoryController extends MyBaseController
      */
     public function addCategory()
     {
-        $lans = Language::all();
         $categories = Category::all();
 
-        $data = ['lans'=>$lans,'categories'=>$categories];
+        $data = ['categories'=>$categories];
 
         return view('layouts.addcategory',$data);
+    }
+
+    public function storeCategory(StoreCategoryRequest $request)
+    {
+           dd($request->all());
     }
 }

@@ -69,10 +69,6 @@ class AuthController extends MyBaseController
 
     protected function getLogin()
     {
-
-        // $bag = ['otherLan'=>Language::other(),
-        //         'curLan'=>Language::current()];
-
         return view('layouts.auth.login');
     }
 

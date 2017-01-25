@@ -5,22 +5,23 @@
 <div class="col-md-6">
 
     <div class="panel panel-default">
-      <div class="panel-heading"><label>Add New Category</label></div>
+      <div class="panel-heading"><label>{{trans('main.add_new_category')}}</label></div>
         <div class="panel-body">
-          <form>
+          <form action="{{route('store-category')}}" method="post">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <div class="form-group">
-              <label>Default Name</label>
-              <input type="text" class="form-control">
+              <label>{{trans('main.name')}}</label>
+              <input type="text" class="form-control" name="name" required maxlength="100">
             </div>
             <div class="form-group">
               <label>Slug</label>
-              <input type="text" class="form-control">
+              <input type="text" class="form-control" name="slug" required maxlength="100">
             </div>
 
-            <label>Parent</label>
+            <label>{{trans('main.parent')}}</label>
              <div class="form-group" id="div-list-category">
                  <label>
-                    <input type="radio" name="category" value="0" checked="true"> None
+                    <input type="radio" name="category" value="0" checked="true"> {{trans('main.none')}}
                  </label>
                 @foreach ($categories as $category)
                   <label>
@@ -33,13 +34,16 @@
                 <hr>
                 <label>多語言</label>
               </div>
-              @foreach ($lans as $lan)
+              @foreach ($allLan as $lan)
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="{{$lan->name }}">
+                <label>
+                  {{$lan->name }}:
+                </label>
+                <input type="text" class="form-control" name="mutilan[{{$lan->code}}]">
                 </div>
               @endforeach
 
-            <button type="submit" class="btn btn-default">Submit</button>
+            <button type="submit" class="btn btn-default">{{trans('main.submit')}}</button>
           </form>
     </div> <!-- end of class panel-body-->
   </div><!--end of class panel panel-default-->
