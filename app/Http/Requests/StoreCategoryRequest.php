@@ -23,8 +23,20 @@ class StoreCategoryRequest extends Request
      */
     public function rules()
     {
-        return [
-            //
+        $rules = [
+            'category_name'=>'required|min:2|max:255',
+            'category_slug'=>'required|min:2|max:255',
+            'category'=>'exists_or_null:category,id',
         ];
+
+      foreach($this->request->get('mutilan') as $key => $val)
+      {
+            if($val !== '')
+            {
+                $rules['mutilan.'.$key] = 'exists:language,id,key,1|min:2';
+            }
+      }
+
+        return $rules;
     }
 }

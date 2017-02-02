@@ -6,4 +6,6 @@ return [
     'parent'=> 'Parent',
     'none'=> 'None',
     'submit'=> 'Submit',
+    'create_success'=> 'create success',
+    'create_failed' => 'create failed',
 ];

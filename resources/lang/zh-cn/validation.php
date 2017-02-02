@@ -107,9 +107,8 @@ return [
     */
 
     'attributes' => [
-        'category_name' => 'Name',
+        'category_name' => '名字',
         'category_slug' => 'Slug',
-        'mutilan.1'=> 'Language',
     ],
 
 ];

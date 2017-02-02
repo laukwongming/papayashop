@@ -14,6 +14,7 @@ class CategoryTableSeeder extends Seeder
         DB::table('category')->insert([
             'name' => 'Electric',
             'slug' => 'electric',
+            'pid'=>0
         ]);
         DB::table('category')->insert([
             'name' => 'Computer',

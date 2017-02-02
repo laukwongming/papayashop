@@ -10,7 +10,7 @@
             <div class="panel panel-login">
                 <div class="panel-heading">
                     <div class="row">
-                        <a href="#" class="active" id="login-form-link">Papaya Shop</a>
+                        <a href="#" class="active" id="login-form-link">Game API</a>
                     </div>
                     <hr>
                 </div>
